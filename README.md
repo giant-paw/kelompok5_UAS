@@ -1,3 +1,8 @@
+Use Case
+
+![Screenshot 2024-12-23 200341](https://github.com/user-attachments/assets/f90df9ba-5fce-4053-8959-1faf3cfbc8d7)
+
+
 How To Setup :
 
 1. Create database "gubuk_sastra" on your local database
