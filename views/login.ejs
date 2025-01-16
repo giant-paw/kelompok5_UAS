@@ -1,0 +1,36 @@
+<!-- HALAMAN UNTUK LOGIN -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/login.css">
+  
+</head>
+<body>
+  <div class="login-container">
+    <img src="https://kuliahkelaskaryawan.net/wp-content/uploads/2022/11/UMYLOGO.svg_-777x437.png" alt="Login Image" class="login-image"> <!-- Replace with your image URL -->
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+    <p>Belum punya akun? <a href="/signup/admin">Daftar sebagai Admin</a> atau <a href="/signup/user">Daftar sebagai User</a>.</p>
+<% if (error) { %>
+<p class="text-danger"><%= error %></p>
+<% } %>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Laporan Jumlah Buku</title>
+    <style>
+        body, html {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            overflow-y: auto;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            flex: 1;
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 30px;
+        }
+
+        .nav-item {
+            margin: 0 15px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        /* Logout Button */
+        .logout {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout:hover {
+            background-color: #444;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            margin-top: 20px; /* Tambahkan jarak vertikal */
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="logo">MANGooS</div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="nav-links">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/book-view">Daftar Buku</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/loan-view">Pinjam</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/data-anggota">Data Anggota</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/laporan">Laporan</a>
+            </li>
+          </ul>
+        </div>
+        <form class="d-flex" action="/logout" method="POST">
+          <button class="btn btn-outline-danger logout" type="submit">Logout</button>
+        </form>
+      </nav>
+    </header>
+    <div class="container">
+        <h1>Halaman Laporan Jumlah Buku</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Judul Buku</th>
+                    <th>Kategori</th>
+                    <th>Jumlah Buku</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Contoh Data -->
+                <tr>
+                    <td>1</td>
+                    <td>Belajar Pemrograman</td>
+                    <td>Teknologi</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Ensiklopedia Sejarah</td>
+                    <td>Sejarah</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Panduan Berkebun</td>
+                    <td>Hobi</td>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

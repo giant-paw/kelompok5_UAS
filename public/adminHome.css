@@ -1,0 +1,128 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Set height to 100vh */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Sesuaikan padding sesuai kebutuhan */
+    background-color: #fff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    flex: 1; /* Memastikan logo berada di kiri */
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin: 0 15px; /* Jarak antar item */
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    transition: color 0.3s ease; /* Transisi untuk efek hover */
+}
+
+.nav-links a:hover {
+    color: #007bff; /* Ubah warna saat hover */
+}
+
+.logout {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Memastikan tombol logout berada di kanan */
+}
+
+.logout:hover {
+    background-color: #444; /* Ubah warna latar belakang saat hover */
+}
+
+.main-content {
+    position: relative;
+    text-align: left;
+    color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 100px);
+    background: url('https://businessmodelanalyst.com/wp-content/uploads/2023/08/MICRO-SUBSCRIPTIONS-content-2.webp') no-repeat center center;
+    background-size: cover;
+}
+
+.main-text {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    transform: translateY(-50%);
+}
+
+.main-text h1 {
+    font-size: 48px;
+    margin: 0;
+    color: #000000;
+}
+
+.main-text p {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.book-section {
+    padding: 20px 0;
+}
+
+.book-section h2 {
+    margin-bottom: 20px;
+}
+
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.main-text .btn:hover {
+    background-color: #0056b3; /* Ubah warna latar belakang saat hover */
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    width: auto; /* Sesuaikan dengan konten */
+}

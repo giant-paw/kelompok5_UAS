@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/pinjam.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Daftar Peminjaman</title>
+</head>
+<body>
+
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="logo">MANGooS</div>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav-links">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/book-view">Daftar Buku</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/loan-view">Pinjam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/data-anggota">Data Anggota</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/laporan">Laporan</a>
+        </li>
+      </ul>
+    </div>
+    <form class="d-flex" action="/logout" method="POST">
+      <button class="btn btn-outline-danger logout" type="submit">Logout</button>
+    </form>
+  </nav>
+</header>
+
+<div class="container mt-5">
+  <h1 class="text-center">Daftar Peminjaman</h1>
+
+  <!-- Form untuk Menambahkan peminjaman Baru -->
+  <form id="addLoanForm" class="my-4">
+    <div class="input-group">
+      <input type="text" id="newIdAnggota" class="form -control" placeholder="ID Anggota" required />
+      <input type="text" id="newIdBuku" class="form-control" placeholder="ID Buku" required />
+      <input type="text" id="newJudulBuku" class="form-control" placeholder="Judul Buku" required />
+      <input type="date" id="newTglPinjam" class="form-control" placeholder="Tanggal Peminjaman" required />
+      <input type="date" id="newTglKembali" class="form-control" placeholder="Tanggal Kembali" required />
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary">Tambah Data</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Daftar Peminjaman -->
+  <ul id="loanList" class="list-group">
+    <% loans.forEach(loan => { %>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span>
+        No Pinjaman: <%= loan.no_pinjaman %> - ID Anggota: <%= loan.id_anggota %> - ID Buku: <%= loan.id_buku %> - Judul: <%= loan.judul_buku %> - Tanggal Pinjam: <%= loan.tgl_pinjam %> - Tanggal Kembali: <%= loan.tgl_kembali %>
+      </span>
+      <div>
+        <button class="btn btn-sm btn-success mr-2 editBtn" data-no_pinjaman="<%= loan.no_pinjaman %>">Edit</button>
+        <button class="btn btn-sm btn-danger deleteBtn" data-no_pinjaman="<%= loan.no_pinjaman %>" onclick="return confirmDelete()">Hapus</button>
+      </div>
+    </li>
+    <% }); %>
+  </ul>
+
+  <!-- Modal Edit Data Peminjaman -->
+  <div id="editModal" class="modal fade" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Data Peminjaman</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editLoanForm">
+            <div class="form-group mb-3">
+              <label for="editIdAnggota">ID Anggota</label>
+              <input type="text" id="editIdAnggota" class="form-control" placeholder="Masukkan ID Anggota" required />
+            </div>
+            <div class="form-group mb-3">
+              <label for="editIdBuku">ID Buku</label>
+              <input type="text" id="editIdBuku" class="form-control" placeholder="Masukkan ID Buku" required />
+            </div>
+            <div class="form-group mb-3">
+              <label for="editJudulBuku">Judul Buku</label>
+              <input type="text" id="editJudulBuku" class="form-control" placeholder="Masukkan Judul Buku" required />
+            </div>
+            <div class="form-group mb-3">
+              <label for="editTglPinjam">Tanggal Pinjam</label>
+              <input type="date" id="editTglPinjam" class="form-control" required />
+            </div>
+            <div class="form-group mb-3">
+              <label for="editTglKembali">Tanggal Kembali</label>
+              <input type="date" id="editTglKembali" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      let editId;
+
+      // Tambah peminjaman baru
+      $("#addLoanForm").on("submit", function (e) {
+        e.preventDefault();
+        const id_anggota = $("#newIdAnggota").val().trim();
+        const id_buku = $("#newIdBuku").val().trim();
+        const judul_Buku = $("#newJudulBuku").val().trim();
+        const tgl_pinjam = $("#newTglPinjam").val().trim();
+        const tgl_kembali = $("#newTglKembali").val().trim();
+
+        if (id_anggota && id_buku && judul_Buku && tgl_pinjam && tgl_kembali) {
+          $.ajax({
+            url: "/loans",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+              id_anggota: id_anggota,
+              id_buku: id_buku,
+              judul_buku: judul_Buku,
+              tgl_pinjam: tgl_pinjam,
+              tgl_kembali: tgl_kembali
+            }),
+            success: function () {
+              location.reload();
+            },
+            error: function (error) {
+              alert("Error menambahkan peminjaman: " + error.responseText);
+            },
+          });
+        } else {
+          alert("Semua field harus diisi!");
+        }
+      });
+
+      // Tampilkan modal edit
+      $(document).on("click", ".editBtn", function () {
+        editId = $(this).data("no_pinjaman");
+
+        // Ambil data pinjaman dari server berdasarkan no_pinjaman
+        $.ajax({
+          url: "/loans/" + editId,
+          type: "GET",
+          success: function (data) {
+            $("#editIdAnggota").val(data.id_anggota);
+            $("#editIdBuku").val(data.id_buku);
+            $("#editJudulBuku").val(data.judul_buku);
+            $("#editTglPinjam").val(data.tgl_pinjam);
+            $("#editTglKembali").val(data.tgl_kembali);
+            $("#editModal").modal("show");
+          },
+          error: function (error) {
+            alert("Error mengambil data pinjaman: " + error.responseText);
+          },
+        });
+      });
+
+      // Update peminjaman
+      $("#editLoanForm").on("submit", function (e) {
+        e.preventDefault();
+        const id_anggota = $("#editIdAnggota").val().trim();
+        const id_buku = $("#editIdBuku").val().trim();
+        const judul_Buku = $("#editJudulBuku").val().trim();
+        const tgl_pinjam = $("#editTglPinjam").val().trim();
+        const tgl_kembali = $("#editTglKembali").val().trim();
+
+        if (id_anggota && id_buku && judul_Buku && tgl_pinjam && tgl_kembali) {
+          $.ajax({
+            url: "/loans/" + editId,
+            type: "PUT",
+            data: JSON.stringify({
+              id_anggota: id_anggota,
+              id_buku: id_buku,
+              judul_buku: judul_Buku,
+              tgl_pinjam: tgl_pinjam,
+              tgl_kembali: tgl_kembali
+            }),
+            contentType: "application/json",
+            success: function () {
+              location.reload();
+            },
+            error: function (error) {
+              alert("Error memperbarui peminjaman: " + error.responseText);
+            },
+          });
+        } else {
+          alert("Semua field harus diisi!");
+        }
+      });
+
+      // Hapus peminjaman
+      $(document).on("click", ".deleteBtn", function () {
+        const id = $(this).data("no_pinjaman");
+
+        $.ajax({
+          url: "/loans/" + id,
+          type: "DELETE",
+          success: function () {
+            location.reload();
+          },
+          error: function (error) {
+            alert("Error menghapus peminjaman: " + error.responseText);
+          },
+        });
+      });
+    });
+
+    function confirmDelete() {
+      return confirm("Apakah Anda yakin ingin menghapus data ini?");
+    }
+  </script>
+</body>
+</html>

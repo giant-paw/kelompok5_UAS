@@ -1,0 +1,259 @@
+<!-- HALAMAN UNTUK MENAMBAH DATA BUKU (UNTUK ADMIN) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/book.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css">
+  <title>Daftar Buku</title>
+
+</head>
+<body>
+
+  <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="logo">MANGooS</div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav-links">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/book-view">Daftar Buku</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/loan-view">Pinjam</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/data-anggota">Data Anggota</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/laporan">Laporan</a>
+          </li>
+        </ul>
+      </div>
+      <form class="d-flex" action="/logout" method="POST">
+        <button class="btn btn-outline-danger logout" type="submit">Logout</button>
+      </form>
+    </nav>
+  </header>
+  
+  <!-- Kontainer Utama -->
+  <main class="container mt-4 mb-4">
+    <!-- Container untuk Filter dan Judul Daftar Buku -->
+    <div class="d-flex justify-content-between align-items-center mt-4 mb-4">
+      <!-- Judul Daftar Buku -->
+      <h1 class="text-center m-0">Daftar Buku</h1>
+
+      <!-- Filter Buku -->
+      <form method="GET" action="/book-view" class="d-flex align-items-center">
+        <input type="text" name="penerbit" class="form-control me-2" placeholder="Cari Penerbit" value="<%= selectedPenerbit %>">
+        <button type="submit" class="btn btn-primary me-2">Cari</button>
+        <a href="/book-view" class="btn btn-secondary">Hapus</a>
+      </form>
+    </div>
+  
+    <!-- Tombol Tambah Buku -->
+    <div class="center-button mt-4">
+      <button id="showAddBookFormBtn" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Tambah Buku
+      </button>
+    </div>
+  
+    <!-- Form Tambah Buku -->
+    <form id="addBookForm" class="my-4 p-4 border rounded" style="display: none; background-color: #f9f9f9;">
+      <h4 class="mb-3">Tambah Buku Baru</h4>
+      <div class="mb-3">
+        <label for="newJudulBuku" class="form-label">Judul Buku</label>
+        <input type="text" id="newJudulBuku" class="form-control" placeholder="Masukkan Judul Buku" required />
+      </div>
+      <div class="mb-3">
+        <label for="newPengarang" class="form-label">Nama Pengarang</label>
+        <input type="text" id="newPengarang" class="form-control" placeholder="Masukkan Nama Pengarang" required />
+      </div>
+      <div class="mb-3">
+        <label for="newPenerbit" class="form-label">Penerbit Buku</label>
+        <input type="text" id="newPenerbit" class="form-control" placeholder="Masukkan Nama Penerbit" required />
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">Tambah Buku</button>
+        <button type="button" id="cancelAddBookFormBtn" class="btn btn-secondary ms-2">Batal</button>
+      </div>
+    </form>
+  
+    <!-- Daftar Buku -->
+    <div id="bookList" class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+      <% books.forEach(book => { %>
+        <div class="col">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><%= book.judul_buku %></h5>
+              <p class="card-text">
+                <strong>Kode Buku:</strong> <%= book.kode_buku %><br>
+                <strong>Pengarang:</strong> <%= book.pengarang %><br>
+                <strong>Penerbit:</strong> <%= book.penerbit %>
+              </p>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+              <button class="btn btn-sm btn-success editBtn" data-kode_buku="<%= book.kode_buku %>"> Edit</button>
+              <button class="btn btn-sm btn-danger deleteBtn" data-kode_buku="<%= book.kode_buku %>"> Hapus</button>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </main>
+  
+  <!-- Modal Edit Buku -->
+  <div id="editModal" class="modal fade" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Edit Buku</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editBookForm">
+            <div class="form-group">
+              <label for="editJudulBuku">Judul Buku</label>
+              <input type="text" id="editJudulBuku" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="editPengarang">Nama Pengarang</label>
+              <input type="text" id="editPengarang" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label for="editPenerbit">Penerbit Buku</label>
+              <input type="text" id="editPenerbit" class="form-control" required />
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Simpan Perubahan</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  
+  </body>
+  
+  <script>
+    $(document).ready(function () {
+      let editId;
+      
+      // Show/hide add book form
+      $("#showAddBookFormBtn").on("click", function () {
+        $("#addBookForm").toggle(); // Toggles the form visibility
+      });
+
+      // Tambah buku baru
+      $("#addBookForm").on("submit", function (e) {
+        e.preventDefault();
+        const judulBuku = $("#newJudulBuku").val().trim();
+        const pengarang = $("#newPengarang").val().trim();
+        const penerbit = $("#newPenerbit").val().trim();
+
+        if (judulBuku && pengarang && penerbit) {
+          $.ajax({
+            url: "/books",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+              judul_buku: judulBuku,
+              pengarang: pengarang,
+              penerbit: penerbit,
+            }),
+            success: function () {
+              location.reload();
+            },
+            error: function (error) {
+              alert("Error menambahkan buku: " + error.responseText);
+            },
+          });
+        } else {
+          alert("Semua field harus diisi!");
+        }
+      });
+
+      // Tombol Batal untuk menyembunyikan form tambah buku
+      $("#cancelAddBookFormBtn").on("click", function () {
+        $("#addBookForm").hide();
+      });
+
+      // Tampilkan modal edit dan isi dengan data buku yang dipilih
+      $(document).on("click", ".editBtn", function () {
+        editId = $(this).data("kode_buku");
+
+        // Ambil data buku dari server berdasarkan kode_buku
+        $.ajax({
+          url: "/books/" + editId,
+          type: "GET",
+          success: function (data) {
+            // Isi field modal dengan data yang diterima
+            $("#editJudulBuku").val(data.judul_buku);
+            $("#editPengarang").val(data.pengarang);
+            $("#editPenerbit").val(data.penerbit);
+
+            // Tampilkan modal edit
+            $("#editModal").modal("show");
+          },
+          error: function (error) {
+            alert("Error mengambil data buku: " + error.responseText);
+          },
+        });
+      });
+
+      // Update buku
+      $("#editBookForm").on("submit", function (e) {
+        e.preventDefault();
+        const judulBuku = $("#editJudulBuku").val().trim();
+        const pengarang = $("#editPengarang").val().trim();
+        const penerbit = $("#editPenerbit").val().trim();
+
+        if (judulBuku && pengarang && penerbit) {
+          $.ajax({
+            url: "/books/" + editId,
+            type: "PUT",
+            data: JSON.stringify({
+              judul_buku: judulBuku,
+              pengarang: pengarang,
+              penerbit: penerbit,
+            }),
+            contentType: "application/json",
+            success: function () {
+              location.reload();
+            },
+            error: function (error) {
+              alert("Error memperbarui buku: " + error.responseText);
+            },
+          });
+        } else {
+          alert("Semua field harus diisi!");
+        }
+      });
+
+      // Hapus buku
+      $(document).on("click", ".deleteBtn", function () {
+        const id = $(this).data("kode_buku");
+
+        $.ajax({
+          url: "/books/" + id,
+          type: "DELETE",
+          success: function () {
+            location.reload();
+          },
+          error: function (error) {
+            alert("Error menghapus buku: " + error.responseText);
+          },
+        });
+      });
+    });
+  </script>
+  
+</body>
+</html>

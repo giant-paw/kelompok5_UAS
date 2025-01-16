@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Sesuaikan padding sesuai kebutuhan */
+    background-color: #fff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    flex: 1; /* Memastikan logo berada di kiri */
+    margin-left: auto;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center; /* Menempatkan link di tengah */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin: 0 15px; /* Jarak antar item */
+}
+
+.logout {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Memastikan tombol logout berada di kanan */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+.nav-links li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    transition: color 0.3s ease; /* Transisi untuk efek hover */
+}
+.nav-links a:hover {
+    color: #007bff; /* Ubah warna saat hover */
+}
+.logout:hover {
+    background-color: #444; /* Ubah warna latar belakang saat hover */
+}
+.main-content {
+    position: relative;
+    text-align: left;
+    color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 100px);
+    background: url('https://kyorinsya.com/wp-content/uploads/2020/01/Library-aisle-with-wooden-shelves-and-hundreds-of-books-539673956-hd.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.main-text {
+    flex-direction: column; /* Menyusun elemen secara vertikal */
+    align-items: flex-start;
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    transform: translateY(-50%);
+}
+.main-text h1 {
+    font-size: 48px;
+    margin:10px 0;
+}
+.main-text p {
+    font-size: 24px;
+    margin: 10px 0;
+}
+.main-text .nav-item {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s ease; /* Transisi untuk efek hover */
+}
+.main-text .btn:hover {
+    background-color: #0056b3; /* Ubah warna latar belakang saat hover */
+}
+.know-more {
+    position: absolute;
+    bottom: 2%;
+    right: 2%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    color: #000;
+    width: 200px;
+}
+.know-more h3 {
+    margin: 0;
+    font-size: 16px;
+}
+.know-more p {
+    margin: 1px 0;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+

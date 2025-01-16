@@ -1,0 +1,61 @@
+body {
+    background-image: url('https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); /* Ganti dengan URL gambar latar belakang Anda */
+    background-size: cover; /* Mengatur gambar agar menutupi seluruh latar belakang */
+    background-position: center; /* Memusatkan gambar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.2); /* Warna putih dengan transparansi */
+    backdrop-filter: blur(10px); /* Efek blur di belakang */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    width: 350px;
+    text-align: center;
+    transition: transform 0.3s; /* Animation on hover */
+    
+}
+.login-container:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+h1 {
+    margin: 1rem 0;
+    color: rgb(100, 99, 99); /* Change text color to white */
+}
+.form-label {
+    color: #628ab2; /* Light color for labels */
+}
+.form-control {
+    border-radius: 5px; /* Rounded corners for input fields */
+    background: rgba(255, 255, 255, 0.8); /* Background input dengan transparansi */
+}
+.btn-primary {
+    width: 100%;
+    background-color: #ff6f61; /* Custom button color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners for button */
+}
+.btn-primary:hover {
+    background-color: #ff4a3a; /* Darker shade on hover */
+}
+p {
+    margin-top: 1rem;
+    color: rgb(18, 112, 171); /* Change text color to white */
+}
+a {
+    color: #ff0000; /* Custom link color */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.login-image {
+    width: 80px; /* Adjust the size of the image */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 1rem; /* Space between image and title */
+}

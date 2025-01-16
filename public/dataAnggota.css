@@ -1,0 +1,229 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  padding: 0;
+  background: linear-gradient(to bottom, #e0e7ff, #f5f7fa);
+
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar Styles */
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  flex: 1;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 30px;
+}
+
+.nav-item {
+  margin: 0 15px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #007bff;
+}
+
+/* Logout Button */
+.logout {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+  background-color: #444;
+}
+
+/* Container General Styles */
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Cards Styling */
+.card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Form Styles for Adding Data (Tambah Data) */
+#addLoanModalBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+#addLoanModalBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Form Delete Confirmation */
+.btn-danger {
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .header {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .container.mt-4 form {
+      flex-direction: column;
+  }
+
+  input.form-control {
+      width: 100%;
+  }
+
+  .center-button {
+      margin-top: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo {
+      font-size: 20px;
+  }
+
+  .nav-links {
+      font-size: 14px;
+  }
+
+  .card-title {
+      font-size: 1rem;
+  }
+
+  .card-text {
+      font-size: 0.8rem;
+  }
+
+  .modal-title {
+      font-size: 1rem;
+  }
+}
+
+/* Styling untuk Form Tambah Buku */
+#addLoanForm {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 0 auto; /* Tengah di dalam kontainer */
+}
+
+#addLoanForm .form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+#addLoanForm .form-group label {
+  flex: 0 0 200px; /* Lebar tetap untuk label */
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+#addLoanForm .form-group input {
+  flex: 1; /* Input menyesuaikan sisa ruang */
+  height: 40px;
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+#addLoanForm .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+#addLoanForm .form-actions button {
+  margin-left: 10px;
+}
+

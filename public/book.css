@@ -1,0 +1,189 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    overflow-y: auto;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar Styles */
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    flex: 1;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 30px;
+}
+
+.nav-item {
+    margin: 0 15px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+}
+
+/* Logout Button */
+.logout {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.logout:hover {
+    background-color: #444;
+}
+
+/* Filter dan Judul Buku Container */
+.filter-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-header-container h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.filter-header-container form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.filter-header-container form input {
+    width: 250px;
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+.filter-header-container form input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.filter-header-container form button,
+.filter-header-container form a {
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+/* Cards Styling */
+.card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#showAddBookFormBtn i {
+    margin-right: 8px;
+  }
+
+/* Form Tambah Buku */
+#addBookForm {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#addBookForm .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#addBookForm .form-group label {
+    flex: 0 0 200px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+#addBookForm .form-group input {
+    flex: 1;
+    height: 40px;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filter-header-container {
+        flex-direction: column;
+    }
+}
