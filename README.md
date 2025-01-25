@@ -7,7 +7,8 @@ Use Case
 <h1>Link Testing Insert Buku : https://github.com/emzhran/testing_TambahData.git</h1>
 <h1>Link Testing Insert Peminjaman: https://github.com/ichsanHPM/testPAW.git</h1>
 <h1>Link Testing Tambah Data: https://github.com/cahyadie/Testingpaw.git</h1>
-<h1>Link DATABASE & Laporan : https://drive.google.com/drive/folders/1PLqdtJIbO00pFjpHa_CaCZjHSTNPDZ40?usp=sharing</h1>
+<h1>Link DATABASE : https://drive.google.com/drive/folders/1PLqdtJIbO00pFjpHa_CaCZjHSTNPDZ40?usp=sharing</h1>
+<h1>LINK LAPORAN : https://umyac-my.sharepoint.com/:w:/g/personal/zachran_zachary_ft22_mail_umy_ac_id/EZ1N4YTPR7pNv5FO8qTOFx0BvjThBDwVymBZftoB85Jo7Q?e=MU0hDo</h1>
 
 How To Setup :
 
