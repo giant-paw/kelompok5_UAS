@@ -5,9 +5,9 @@ Use Case
 
 <h1>Link Testing Tambah Data ADMIN: https://github.com/giant-paw/kelompok5_UAS.git</h1>
 <h1>Link Testing Insert Buku : https://github.com/emzhran/testing_TambahData.git</h1>
-<h1>Link Testing :</h1>
-<h1>Link Testing :</h1>
-<h1>Link DATABASE : https://drive.google.com/drive/folders/1PLqdtJIbO00pFjpHa_CaCZjHSTNPDZ40?usp=sharing</h1>
+<h1>Link Testing Insert Peminjaman: https://github.com/ichsanHPM/testPAW.git</h1>
+<h1>Link Testing Tambah Data: https://github.com/cahyadie/Testingpaw.git</h1>
+<h1>Link DATABASE & Laporan : https://drive.google.com/drive/folders/1PLqdtJIbO00pFjpHa_CaCZjHSTNPDZ40?usp=sharing</h1>
 
 How To Setup :
 
